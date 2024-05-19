@@ -1,0 +1,49 @@
+server:
+  port: 8070
+mybatis:
+  configuration:
+   map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: provider
+  datasource:
+    url: jdbc:mysql://139.155.150.150:3307/smartleafhub?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 1586866@Xyz
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: 139.155.150.150
+    port: 6379
+    database: 0
+    timeout: 1800000
+    lettuce:
+      pool:
+        max-active: 20
+        max-wait: 1
+        min-idle: 0
+        max-idle: 5
+    password: 096013Xyz
+token:
+  refreshTime: 300000
+  secretKey: 096013
+  expiresTime: 3600000
+
+mqtt:
+  hostUrl: tcp://localhost:1883
+  username: admin
+  password: public
+  client-id: mqtt_test001
+  cleanSession: true
+  reconnect: true
+  timeout: 100
+  keepAlive: 100
+  defaultTopic: bcd
+  isOpen: true
+  qos: 1
+autoconfig:
+  fen-auto: false
+  pump-auto: false
+  light-auto: false

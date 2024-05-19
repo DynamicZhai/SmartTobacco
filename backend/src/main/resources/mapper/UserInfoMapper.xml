@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.anranruozhu.mapper.UserInfoMapper">
+    <insert id="InsertID">
+        INSERT INTO smartleafhub.userinfo(id)
+            value (#{id})
+    </insert>
+    <update id="UpdateUserInfo" parameterType="com.anranruozhu.entity.UserInfo">
+    UPDATE userinfo
+        <set><if test="nickname != null">
+               nickname = #{nickname},
+            </if>
+            <if test="email != null">
+                email = #{email},
+            </if>
+            <if test="address != null">
+                address = #{address},
+            </if>
+            </set>
+    WHERE id = #{id}
+        </update>
+    <select id="FindByID" resultType="com.anranruozhu.entity.UserInfo">
+        SELECT * FROM smartleafhub.userinfo
+        WHERE id=#{id}
+    </select>
+</mapper>

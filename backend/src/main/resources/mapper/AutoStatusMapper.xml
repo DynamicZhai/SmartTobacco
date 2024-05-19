@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.anranruozhu.mapper.AutoStatusMapper">
+    <insert id="addStatus">
+        INSERT INTO
+            automation_status_table(light_status, pump_status, fen_status)
+        VALUES(#{lightStatus}, #{pumpStatus}, #{fenStatus})
+    </insert>
+
+    <select id="getStatus" resultType="com.anranruozhu.entity.AutoStatus">
+        SELECT light_status,pump_status,fen_status
+        FROM smartleafhub.automation_status_table
+        ORDER BY timestamp DESC LIMIT 1;
+    </select>
+</mapper>

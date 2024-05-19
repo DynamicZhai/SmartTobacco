@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.anranruozhu.mapper.UserMapper">
+
+    <select id="login" resultType="com.anranruozhu.entity.User">
+        SELECT * from smartleafhub.users
+        WHERE phone_number=#{phoneNumber} AND password=#{password}
+    </select>
+
+    <insert id="register">
+        INSERT INTO smartleafhub.users(phone_number,password)
+        Values (#{phoneNumber},#{password})
+    </insert>
+
+    <select id="findByPhone" resultType="String">
+        SELECT users.id from smartleafhub.users
+        WHERE phone_number=#{phoneNumber}
+    </select>
+
+    <update id="UpdatePassword">
+        UPDATE users SET password=#{password}
+        WHERE phone_number=#{phoneNumber}
+    </update>
+</mapper>

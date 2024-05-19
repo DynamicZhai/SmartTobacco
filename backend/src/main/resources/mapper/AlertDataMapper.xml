@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.anranruozhu.mapper.AlertDataMapper">
+    <insert id="AlertNew">
+        INSERT INTO
+            alert_data(alert_type,alert_message,alert_data)
+            VALUES(#{alertType}, #{alertMessage}, #{alertData})
+    </insert>
+    <select id="getAlertData" resultType="com.anranruozhu.entity.AlertData">
+        SELECT *
+        FROM alert_data
+        WHERE alert_type = #{alertType}
+        ORDER BY alert_time DESC
+            LIMIT 1;
+    </select>
+    <select id="getAlertAll" resultType="com.anranruozhu.entity.AlertData">
+        SELECT *
+        FROM alert_data
+        ORDER BY alert_time DESC
+        LIMIT 3;
+    </select>
+</mapper>
